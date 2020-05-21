@@ -94,7 +94,7 @@ class NeuralODE(pl.LightningModule):
     def configure_optimizers(self):
         # REQUIRED
         # can return multiple optimizers and learning_rate schedulers
-        return torch.optim.Adam(self.parameters(), lr=self.hparams.lr)
+        return torch.optim.RMSprop(self.parameters(), lr=self.hparams.lr)
 
     def train_dataloader(self):
         # REQUIRED

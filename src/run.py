@@ -29,8 +29,8 @@ if __name__ == '__main__':
 	# general params
 	parser.add_argument("--gpu", type=int, default=0, help="number of gpus")
 	parser.add_argument("--num_epochs", type=int, default=200, help="number of gpus")
-	parser.add_argument("--batch_size", type=int, default=8, help="size of training batch")
-	parser.add_argument("--lr", type=int, default=1e-10, help="learning rate")
+	parser.add_argument("--batch_size", type=int, default=64, help="size of training batch")
+	parser.add_argument("--lr", type=int, default=1e-3, help="learning rate")
 	parser.add_argument("--accumulate_grad_batches", type=int, default=64, help="grad batches")
 	parser.add_argument("--tol", type=float, default=0.1, help="tolerance of ode solve")
 	parser.add_argument("--num_data", type=int, default=640, help="number of data points")

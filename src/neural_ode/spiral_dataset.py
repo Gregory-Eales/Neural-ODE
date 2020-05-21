@@ -23,13 +23,19 @@ class SpiralDataset(Dataset):
 		start = 0
 		stop = 10*np.pi
 
-		a = torch.cos(torch.linspace(start, stop, steps=n)).reshape(-1, 1)
-		b = torch.sin(torch.linspace(start, stop, steps=n)).reshape(-1, 1)
+		a = torch.linspace(start, stop, steps=n).reshape(-1, 1)
+		b = torch.linspace(start, stop, steps=n).reshape(-1, 1)
 		c = torch.linspace(start, stop, steps=n).reshape(-1, 1)
+		self.y = torch.cat([a, b, c], dim=1)
 
 		self.t = torch.linspace(start, stop, steps=n).reshape(-1, 1)
-		self.y = torch.cat([a, b, c], dim=1)
-		self.y_0 = torch.cat([torch.ones(n, 1), torch.zeros(n, 2)], dim=1)
+		
+		self.y_0 = torch.cat([torch.randn(n, 1), torch.randn(n, 2)], dim=1)
+
+		a_0 = torch.linspace(start-1, stop-1, steps=n).reshape(-1, 1)
+		b_0 = torch.linspace(start-1, stop-1, steps=n).reshape(-1, 1)
+		c_0 = torch.linspace(start, stop, steps=n).reshape(-1, 1)
+		self.y_0 = torch.cat([a_0, b_0, c_0], dim=1)
 
 
 	def __len__(self):

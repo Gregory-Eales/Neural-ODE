@@ -17,6 +17,7 @@ class LinearBlock(torch.nn.Module):
 	def define_network(self):
 
 		self.relu = torch.nn.LeakyReLU()
+		self.tanh = torch.nn.Tanh()
 
 		self.linear["l{}".format(0)] = torch.nn.Linear(self.hparams.linear_in_features,
 			 self.hparams.linear_hidden_features)
