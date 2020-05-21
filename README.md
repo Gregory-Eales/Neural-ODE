@@ -3,16 +3,8 @@
  
 # Neural Ordinary Differential Equations  
 
-[![Paper](http://img.shields.io/badge/paper-arxiv.1001.2234-B31B1B.svg)](https://www.nature.com/articles/nature14539)
-[![Conference](http://img.shields.io/badge/NeurIPS-2019-4b44ce.svg)](https://papers.nips.cc/book/advances-in-neural-information-processing-systems-31-2018)
-[![Conference](http://img.shields.io/badge/ICLR-2019-4b44ce.svg)](https://papers.nips.cc/book/advances-in-neural-information-processing-systems-31-2018)
-[![Conference](http://img.shields.io/badge/AnyConference-year-4b44ce.svg)](https://papers.nips.cc/book/advances-in-neural-information-processing-systems-31-2018)  
-<!--
-ARXIV   
-[![Paper](http://img.shields.io/badge/arxiv-math.co:1480.1111-B31B1B.svg)](https://www.nature.com/articles/nature14539)
--->
-
-
+[![Paper](https://img.shields.io/badge/Paper-arXiv%1806.07366-red.svg)](https://arxiv.org/pdf/1806.07366.pdf)
+[![Status](https://img.shields.io/badge/Status-Incomplete-red.svg)]()
 
 <!--  
 Conference   
@@ -26,7 +18,7 @@ This is an implementation of the neural ode paper using pytorch lightning
 First, install dependencies   
 ```bash
 # clone project   
-git clone https://github.com/YourGithubName/Your-project-name   
+git clone https://github.com/Gregory-Eales/Neural-ODE   
 
 # install project   
 cd Neural-ODE
@@ -42,16 +34,18 @@ cd src/
 python run.py    
 ```
 
-## Baselines    
-List your baselines here.   
-- [Research MNIST](https://github.com/PyTorchLightning/pytorch-lightning-conference-seed/tree/master/src/research_mnist) 
+## Results   
 
-### Citation   
+
+### Citation
+
+- [Original Author Repo](https://github.com/lye0618/torchdiffeq)
+
 ```
-@article{YourName,
-  title={Your Title},
-  author={Your team},
-  journal={Location},
-  year={Year}
+@article{chen2018neural,
+  title={Neural Ordinary Differential Equations},
+  author={Chen, Ricky T. Q. and Rubanova, Yulia and Bettencourt, Jesse and Duvenaud, David},
+  journal={Advances in Neural Information Processing Systems},
+  year={2018}
 }
 ```   
