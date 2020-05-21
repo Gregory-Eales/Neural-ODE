@@ -5,16 +5,18 @@ import os
 import torch
 from torch.nn import functional as F
 from torch.utils.data import DataLoader
-import torchvision.transforms as transforms
 from argparse import ArgumentParser
 
 import pytorch_lightning as pl
+import torchdiffeq
+
+
 
 
 class NeuralODE(pl.LightningModule):
 
     def __init__(self, hparams):
-        super(CoolSystem, self).__init__()
+        super(NeuralODE, self).__init__()
       
         self.hparams = hparams
         
