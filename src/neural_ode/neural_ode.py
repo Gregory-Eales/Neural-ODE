@@ -9,8 +9,9 @@ from argparse import ArgumentParser
 
 import pytorch_lightning as pl
 import torchdiffeq
+from torchdiffeq import odeint
 
-from blocks import LinearBlock, ConvBlock, ODEBlock
+from .blocks import LinearBlock, ConvBlock, ODEBlock
 
 
 class NeuralODE(pl.LightningModule):
@@ -19,6 +20,8 @@ class NeuralODE(pl.LightningModule):
         super(NeuralODE, self).__init__()
       
         self.hparams = hparams
+
+        self.define_network()
 
     def define_network(self):
 
@@ -30,21 +33,34 @@ class NeuralODE(pl.LightningModule):
 
             self.odefunc = ConvBlock(hparams=self.hparams)
 
-        self.ode_block = ODEBlock(hparams, self.odefunc)
+        self.ode_block = ODEBlock(self.hparams, self.odefunc)
         
 
     def forward(self, x):
-        return None
+        return self.ode_block.forward(x)
 
     def training_step(self, batch, batch_idx):
         # REQUIRED
-        x, y = batch
-        y_hat = self.forward(x)
-        loss = F.cross_entropy(y_hat, y)
 
-        tensorboard_logs = {'train_loss': loss}
+        try:
+            batch_y0, batch_t, batch_y = batch
 
-        return {'loss': loss, 'log': tensorboard_logs}
+            pred_y = odeint(self.odefunc, batch_y0, batch_t)
+            loss = torch.mean(torch.abs(pred_y - batch_y))
+
+            tensorboard_logs = {'train_loss': loss}
+
+            return {'loss': loss, 'log': tensorboard_logs}
+
+        except:
+            print("#################################")
+            print("#################################")
+            batch_y0, batch_t, batch_y = batch
+            print(batch_y0.shape, batch_t.shape, batch_y.shape)
+            pred_y = odeint(self.odefunc, batch_y0, batch_t)
+            print(pred_y.shape)
+            print("#################################")
+            print("#################################")
 
 
     """
@@ -78,12 +94,12 @@ class NeuralODE(pl.LightningModule):
     def configure_optimizers(self):
         # REQUIRED
         # can return multiple optimizers and learning_rate schedulers
-        return torch.optim.Adam(self.parameters(), lr=self.hparams.learning_rate)
+        return torch.optim.Adam(self.parameters(), lr=self.hparams.lr)
 
     def train_dataloader(self):
         # REQUIRED
-        return DataLoader(MNIST(os.getcwd(), train=True, download=True, transform=transforms.ToTensor()), batch_size=self.hparams.batch_size)
-
+        #return DataLoader(MNIST(os.getcwd(), train=True, download=True, transform=transforms.ToTensor()), batch_size=self.hparams.batch_size)
+        pass
     """
     def val_dataloader(self):
         # OPTIONAL
@@ -108,4 +124,5 @@ class NeuralODE(pl.LightningModule):
         parser.add_argument('--max_nb_epochs', default=2, type=int)
 
         return parser
+
 
