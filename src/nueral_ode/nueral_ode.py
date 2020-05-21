@@ -10,7 +10,7 @@ from argparse import ArgumentParser
 import pytorch_lightning as pl
 import torchdiffeq
 
-
+from blocks import LinearBlock, ConvBlock, ODEBlock
 
 
 class NeuralODE(pl.LightningModule):
@@ -19,6 +19,18 @@ class NeuralODE(pl.LightningModule):
         super(NeuralODE, self).__init__()
       
         self.hparams = hparams
+
+    def define_network(self):
+
+        if self.hparams.linear_block:
+
+            self.odefunc = LinearBlock(hparams=self.hparams)
+
+        elif self.hparams.conv_block:
+
+            self.odefunc = ConvBlock(hparams=self.hparams)
+
+        self.ode_block = ODEBlock(hparams, self.odefunc)
         
 
     def forward(self, x):
