@@ -37,7 +37,7 @@ python run.py
 ## Results   
 
 
-### Citation
+## Citation
 
 [1] Ricky T. Q. Chen, Yulia Rubanova, Jesse Bettencourt, David Duvenaud. "Neural Ordinary Differential Equations." Advances in Neural Information Processing Systems. 2018. [arxiv](https://arxiv.org/pdf/1806.07366.pdf)
 
