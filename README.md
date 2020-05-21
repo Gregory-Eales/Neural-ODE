@@ -3,7 +3,7 @@
  
 # Neural Ordinary Differential Equations  
 
-[![Paper](https://img.shields.io/badge/Paper-arXiv%1806.07366-red.svg)](https://arxiv.org/pdf/1806.07366.pdf)
+[![Paper](https://img.shields.io/badge/Paper-1806.07366-red.svg)](https://arxiv.org/pdf/1806.07366.pdf)
 [![Status](https://img.shields.io/badge/Status-Incomplete-red.svg)]()
 
 <!--  
