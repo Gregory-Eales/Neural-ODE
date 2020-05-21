@@ -12,7 +12,7 @@ Conference
 </div>
  
 ## Description   
-This is an implementation of the neural ode paper using pytorch lightning
+This is an implementation of the neural ode using pytorch lightning
 
 ## How to run   
 First, install dependencies   
@@ -41,7 +41,7 @@ python run.py
 
 [1] Ricky T. Q. Chen, Yulia Rubanova, Jesse Bettencourt, David Duvenaud. "Neural Ordinary Differential Equations." Advances in Neural Information Processing Systems. 2018. [arxiv](https://arxiv.org/pdf/1806.07366.pdf)
 
-- [Original Author Repo](https://github.com/lye0618/torchdiffeq)
+- [Paper Repo](https://github.com/lye0618/torchdiffeq)
 
 ```
 @article{chen2018neural,
