@@ -14,6 +14,8 @@ class LinearBlock(torch.nn.Module):
 
 		self.define_network()
 
+		self.n = 0
+
 	def define_network(self):
 
 		self.relu = torch.nn.LeakyReLU()
@@ -38,6 +40,11 @@ class LinearBlock(torch.nn.Module):
 		for i in range(self.hparams.num_linear_layers+1):
 			out = self.linear["l{}".format(i)](out)
 			out = self.relu(out)
+
+		self.n+=1
+
+		if self.n%10 == 0:
+			print(self.n)
 
 		return out
 
